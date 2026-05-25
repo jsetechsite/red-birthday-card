@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday Red! 🎂</title>
+    <!-- Tailwind CSS for sleek utility styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font & Plus Jakarta Sans for premium, clean modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow-red': 'glowRed 2s infinite alternate',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'float-slow': 'floatSlow 4s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 50% 50%, #1a0505 0%, #0d0202 50%, #000000 100%);
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .display-font {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Luxury dark glassmorphism effects */
+        .glass-panel {
+            background: rgba(18, 18, 22, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-panel-dark {
+            background: rgba(10, 10, 12, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            box-shadow: 0 20px 50px rgba(239, 68, 68, 0.1);
+        }
+
+        /* Premium interactive envelope animations */
+        .envelope-wrapper {
+            perspective: 1500px;
+        }
+        
+        .envelope {
+            position: relative;
+            background: linear-gradient(135deg, #1f1f23 0%, #09090b 100%);
+            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 50px rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .envelope.open {
+            transform: translateY(120px) rotateX(-15deg);
+        }
+
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            border-left: 170px solid transparent;
+            border-right: 170px solid transparent;
+            border-top: 130px solid #1a1a1c;
+            transform-origin: top;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, z-index 0.2s ease-in-out 0.2s;
+            z-index: 4;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+        }
+
+        @media (max-width: 640px) {
+            .flap {
+                border-left-width: 145px;
+                border-right-width: 145px;
+                border-top-width: 105px;
+            }
+        }
+
+        .envelope.open .flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        /* Smooth card reveal dynamics */
+        .card-inner {
+            transform: translateY(0);
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s, opacity 0.5s;
+            z-index: 2;
+        }
+
+        .envelope.open .card-inner {
+            transform: translateY(-290px) scale(1.03);
+            z-index: 5;
+        }
+
+        @media (max-width: 640px) {
+            .envelope.open .card-inner {
+                transform: translateY(-220px) scale(1.01);
+            }
+        }
+
+        /* Candle flame high fidelity styling & animation */
+        @keyframes flameGlow {
+            0%, 100% { transform: scale(1) rotate(-1deg); filter: drop-shadow(0 0 8px #dc2626) brightness(1.2); }
+            50% { transform: scale(1.1) rotate(2deg); filter: drop-shadow(0 0 15px #ef4444) brightness(1.4); }
+        }
+
+        @keyframes glowRed {
+            0% { box-shadow: 0 0 10px rgba(220, 38, 38, 0.3); }
+            100% { box-shadow: 0 0 25px rgba(220, 38, 38, 0.7); }
+        }
+
+        .flame {
+            animation: flameGlow 0.8s infinite alternate ease-in-out;
+            transform-origin: bottom center;
+        }
+
+        /* Floating elements for rich ambiance */
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(0.5deg); }
+        }
+
+        .floating-element {
+            animation: subtleFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* Ambient floating ember particle effects */
+        @keyframes riseUp {
+            0% { transform: translateY(110vh) translateX(0) scale(0.6); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-20vh) translateX(30px) scale(1.1); opacity: 0; }
+        }
+
+        .floating-bubble {
+            position: absolute;
+            bottom: -100px;
+            animation: riseUp 14s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.6) 0%, rgba(185, 28, 28, 0.2) 60%, rgba(0, 0, 0, 0) 100%);
+            filter: blur(1px);
+            box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+        }
+
+        /* Custom scrollbar to keep layout clean */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(220, 38, 38, 0.4);
+            border-radius: 999px;
+        }
+
+        /* Phonograph styling extensions */
+        .vinyl-record {
+            transform-origin: center center;
+            transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .vinyl-record.spinning {
+            animation: spinVinyl 2.4s linear infinite;
+        }
+        @keyframes spinVinyl {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .tonearm {
+            transform-origin: 175px 45px; /* Pivot coordinates on our SVG */
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tonearm.active {
+            transform: rotate(26deg);
+        }
+
+        /* Soundwave animations */
+        @keyframes soundwave {
+            0%, 100% { transform: scaleY(0.3); opacity: 0.3; }
+            50% { transform: scaleY(1); opacity: 1; }
+        }
+        .wave-bar {
+            animation: soundwave 1.2s ease-in-out infinite;
+            transform-origin: bottom;
+        }
+        .wave-bar:nth-child(2) { animation-delay: 0.15s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.3s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.45s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-between p-4 sm:p-6 md:p-8 select-none relative overflow-x-hidden text-neutral-100">
+
+    <div id="bubble-container" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
+
+    <!-- Sleek Top Floating Controls Bar -->
+    <header class="w-full max-w-xl mx-auto flex justify-between items-center z-20 mb-4 px-1">
+        <div class="flex items-center space-x-2 glass-panel px-3 py-1.5 rounded-full shadow-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></span>
+            <span class="text-[11px] font-bold tracking-wider text-red-500 uppercase display-font">Red's Celebration</span>
+        </div>
+        <div class="flex space-x-2">
+            <!-- Music controller -->
+            <button id="toggle-music" class="glass-panel hover:bg-neutral-900 active:scale-95 text-red-500 hover:text-red-400 px-3 py-2 rounded-full shadow-md transition-all flex items-center justify-center text-xs font-semibold border border-red-900/40" title="Play Birthday Song">
+                <span class="mr-1">🎵</span> <span id="music-btn-text" class="hidden sm:inline">Play Song</span>
+            </button>
+            <!-- Mute trigger -->
+            <button id="mute-sfx" class="glass-panel hover:bg-neutral-900 active:scale-95 text-red-500 p-2 rounded-full shadow-md transition-all flex items-center justify-center border border-red-900/40" title="Toggle Sound Effects">
+                🔊
+            </button>
+        </div>
+    </header>
+
+    <main class="w-full flex-grow flex items-center justify-center z-10 my-auto py-2">
+        
+        <!-- STAGE 1: THE PREMIUM ENVELOPE (Initial View) -->
+        <div id="envelope-stage" class="w-full max-w-md flex flex-col items-center justify-center transition-all duration-700">
+            <p class="text-red-200 text-sm font-semibold tracking-wide mb-6 animate-bounce text-center px-4 display-font bg-neutral-950/85 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-red-900/50">
+                ✨ A premium invitation awaits. Tap to open!
+            </p>
+            
+            <div class="envelope-wrapper relative cursor-pointer" onclick="openBirthdayCard()">
+                <div id="envelope-element" class="envelope w-[310px] h-[210px] sm:w-[360px] sm:h-[240px] rounded-b-2xl shadow-2xl flex items-center justify-center overflow-visible">
+                    
+                    <!-- Top Flap of Envelope -->
+                    <div class="flap"></div>
+                    
+                    <!-- Sleek Premium Wax Seal (Custom SVG) -->
+                    <div class="absolute inset-0 flex items-center justify-center z-10 transition-transform duration-500 hover:scale-110">
+                        <div class="bg-gradient-to-br from-red-500 via-red-600 to-red-800 rounded-full w-14 h-14 flex items-center justify-center shadow-[0_10px_25px_rgba(220,38,38,0.5)] border border-red-400/50 relative animate-glow-red">
+                            <svg class="w-8 h-8 text-neutral-950 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                            <!-- Ambient glowing ring -->
+                            <div class="absolute inset-0 rounded-full border border-white/20 animate-pulse"></div>
+                        </div>
+                    </div>
+
+                    <!-- Inner Card Peek (Visual Cue) -->
+                    <div class="absolute inset-x-4 top-2 bottom-6 bg-neutral-800/90 rounded-t-lg z-2 transform scale-95 origin-bottom opacity-10"></div>
+
+                    <!-- Front Envelope Pocket Cover -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-neutral-900 to-black rounded-b-2xl border-t border-neutral-800 z-3"></div>
+                    <div class="absolute bottom-3 left-4 text-red-500/90 text-[10px] font-bold tracking-widest uppercase">To: Red</div>
+                    <div class="absolute bottom-3 right-4 text-red-500/90 text-[10px] font-bold tracking-widest uppercase">Tap to open 💋</div>
+                </div>
+            </div>
+            
+            <p class="text-neutral-500 text-[10px] mt-8 text-center uppercase tracking-widest opacity-75">
+                Optimized with Red & Obsidian Web Audio synthesis
+            </p>
+        </div>
+
+        <!-- STAGE 2: THE MODERN CELEBRATION CARD -->
+        <div id="card-stage" class="hidden w-full max-w-xl glass-panel-dark rounded-3xl p-5 sm:p-8 relative flex-col items-center justify-start transition-all duration-700 transform scale-95 opacity-0">
+            
+            <!-- Confetti System Canvas -->
+            <canvas id="confetti-canvas" class="absolute inset-0 w-full h-full pointer-events-none rounded-3xl z-10"></canvas>
+
+            <!-- SLEEK HEADER: Picture Frame -->
+            <div class="relative w-full flex flex-col items-center mb-6">
+                <div class="absolute -top-6 w-36 h-36 bg-red-600/10 rounded-full blur-3xl animate-pulse-slow"></div>
+                
+                <!-- Picture Frame Container with Glowing Red/Gold Border -->
+                <div class="relative z-10">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-neutral-900 p-0.5 bg-gradient-to-tr from-red-600 to-amber-500 shadow-2xl relative overflow-visible floating-element">
+                        <img id="avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="Red" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/150x150/1c1917/ef4444?text=Red+✨'">
+                        
+                        <!-- Premium Crown Accessory -->
+                        <div class="absolute -top-4 -left-2 transform -rotate-12 text-3xl select-none filter drop-shadow">👑</div>
+                        <!-- Little decorative badge -->
+                        <div class="absolute -bottom-1 -right-1 bg-gradient-to-r from-red-600 to-neutral-950 text-white rounded-full p-1.5 shadow-md text-[9px] font-bold border border-red-900 uppercase tracking-wider">
+                            V.I.P
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POP-UP CAKE CONTAINER -->
+            <div class="relative w-full flex flex-col items-center py-4 mb-5 select-none bg-gradient-to-b from-neutral-950 to-neutral-900/80 rounded-2xl p-4 border border-red-950 shadow-inner">
+                
+                <p id="cake-instruction" class="text-[10px] font-bold text-red-400 mb-3 animate-pulse uppercase tracking-widest display-font">
+                    🕯️ Tap candles to blow them out! 🕯️
+                </p>
+
+                <!-- 3D Vector Cake Layers -->
+                <div class="flex flex-col items-center w-full max-w-[280px]">
+                    
+                    <!-- Row of 3 Modern Candle Sticks -->
+                    <div class="flex justify-around items-end w-[160px] h-10 relative z-10 px-2 mb-[-1px]">
+                        <!-- Candle 1 -->
+                        <div id="candle-1" class="candle flex flex-col items-center cursor-pointer transition-all duration-300 hover:scale-110" onclick="extinguishCandle(1)">
+                            <div class="flame w-2.5 h-4 bg-gradient-to-t from-red-600 via-orange-400 to-white rounded-full"></div>
+                            <div class="w-2 h-7 bg-gradient-to-b from-red-600 to-neutral-950 rounded-t-sm shadow-sm border border-red-950"></div>
+                        </div>
+                        <!-- Candle 2 (Centerpiece) -->
+                        <div id="candle-2" class="candle flex flex-col items-center cursor-pointer transition-all duration-300 hover:scale-110" onclick="extinguishCandle(2)">
+                            <div class="flame w-2.5 h-4 bg-gradient-to-t from-red-600 via-yellow-400 to-white rounded-full"></div>
+                            <div class="w-2 h-9 bg-gradient-to-b from-neutral-950 to-red-600 rounded-t-sm shadow-sm border border-red-950"></div>
+                        </div>
+                        <!-- Candle 3 -->
+                        <div id="candle-3" class="candle flex flex-col items-center cursor-pointer transition-all duration-300 hover:scale-110" onclick="extinguishCandle(3)">
+                            <div class="flame w-2.5 h-4 bg-gradient-to-t from-red-600 via-orange-400 to-white rounded-full"></div>
+                            <div class="w-2 h-7 bg-gradient-to-b from-red-600 to-neutral-950 rounded-t-sm shadow-sm border border-red-950"></div>
+                        </div>
+                    </div>
+
+                    <!-- Cake Layer 1 (Top Level) -->
+                    <div class="w-[150px] h-[45px] bg-gradient-to-b from-neutral-900 to-neutral-950 rounded-t-xl relative border-b-2 border-red-900 shadow-md overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-x-0 top-0 h-2 bg-gradient-to-b from-red-900/30 to-transparent rounded-t-xl"></div>
+                        <!-- Topping Details -->
+                        <div class="absolute top-2 w-full flex justify-between px-4 text-[9px] opacity-70">🍓 🍓 🍓</div>
+                        <span class="text-red-500 font-extrabold text-[11px] tracking-widest relative z-10 display-font">RED</span>
+                    </div>
+
+                    <!-- Cake Layer 2 (Bottom Level) -->
+                    <div class="w-[200px] h-[55px] bg-gradient-to-b from-neutral-950 to-neutral-900 rounded-t-lg relative border-b-2 border-red-950 shadow-lg overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-x-0 top-0 h-3 bg-red-950/40 rounded-t-lg"></div>
+                        <!-- Sleek Sparkle sprinkles decoration -->
+                        <div class="absolute top-4 w-full flex justify-around px-4 text-[9px] opacity-60">✨ ✨ ✨ ✨</div>
+                        <span class="text-red-400 font-extrabold text-[10px] tracking-widest relative z-10 display-font uppercase">Happy Birthday!</span>
+                    </div>
+
+                    <!-- Sleek Serving Plate -->
+                    <div class="w-[230px] h-2 bg-neutral-800 rounded-full shadow-lg border border-red-950/40"></div>
+                </div>
+
+                <!-- Auxiliary Action Buttons -->
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="blowAllCandles()" class="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 active:scale-95 text-white font-semibold px-4 py-1.5 rounded-full shadow-md text-xs transition-all flex items-center space-x-1 border border-red-500/20">
+                        💨 <span>Blow out all</span>
+                    </button>
+                    <button id="relight-btn" onclick="relightCandles()" class="hidden bg-neutral-800 hover:bg-neutral-700 active:scale-95 text-neutral-200 font-semibold px-3 py-1.5 rounded-full shadow-md text-xs transition-all flex items-center space-x-1 border border-red-900/30">
+                        🔄 <span>Relight</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- HEARTFELT CORNERSTONE MESSAGE -->
+            <div class="w-full text-center bg-neutral-950/60 rounded-2xl p-5 sm:p-6 border border-red-950/80 shadow-sm relative overflow-hidden mb-5">
+                <div class="absolute top-0 right-0 w-12 h-12 bg-red-950/20 rounded-bl-full flex items-center justify-center text-red-500 font-bold">✨</div>
+                
+                <h2 class="text-xl sm:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-200 mb-2.5 display-font">
+                    Dearest Red, 🎉
+                </h2>
+                
+                <p id="birthday-message" class="text-neutral-300 text-xs sm:text-sm leading-relaxed font-normal text-justify sm:text-center select-text selection:bg-red-950 selection:text-red-200">
+                    Happy Birthday, Red! Thank you for being such a kind, considerate, understanding, sweet, funny, and truly amazing person in my life. You continue to inspire me, and you're the best person to do dance duets with. I’m really glad I had the chance to meet you, and I’m grateful to have you in my life. Wishing you lots of happiness and an amazing year ahead!
+                </p>
+                
+                <!-- Tiny custom heart dynamic seal -->
+                <div class="mt-4 flex justify-center items-center space-x-2">
+                    <span class="text-red-500 animate-pulse text-sm">❤️</span>
+                    <span class="text-red-400 text-[10px] font-bold uppercase tracking-wider display-font">With Lots of Love & Celebration</span>
+                    <span class="text-red-500 animate-pulse text-sm">❤️</span>
+                </div>
+            </div>
+
+            <!-- Polaroid Section -->
+            <div class="w-full flex justify-center mb-6">
+                <!-- Shared Polaroid Photo of Us -->
+                <div class="bg-neutral-900 p-2.5 pb-3.5 rounded-xl shadow-2xl border border-red-950/50 transform rotate-1 hover:rotate-0 transition-all duration-300 max-w-[190px] w-full flex flex-col items-center">
+                    <div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-neutral-950 relative">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=400&auto=format&fit=crop" alt="Us" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/200x150/000000/ef4444?text=Us+❤️'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-red-950/40 to-transparent"></div>
+                    </div>
+                    <p class="text-[9px] font-bold text-red-500 mt-2 tracking-widest uppercase display-font flex items-center gap-1 select-none">
+                        <span>Us</span> <span class="text-xs animate-pulse">✨</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- SYNCED DANCE DUET ARENA -->
+            <div class="w-full bg-black/90 text-white rounded-2xl p-4 border border-red-950/70 shadow-2xl relative overflow-hidden mb-6">
+                <!-- Glowing futuristic neon grid element -->
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.15),transparent_65%)]"></div>
+                
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="flex items-center space-x-1.5 mb-1.5">
+                        <span class="text-base">🕺</span>
+                        <h3 class="text-[10px] font-extrabold tracking-widest text-red-500 uppercase display-font">Dance Duet Arena</h3>
+                        <span class="text-base">💃</span>
+                    </div>
+                    
+                    <p class="text-[9px] text-neutral-400 mb-4 text-center tracking-wide">
+                        Let's dance, Red! Trigger moves below to sync our grooves!
+                    </p>
+
+                    <!-- Neon Dancers Floor -->
+                    <div class="flex justify-around items-end w-full max-w-[340px] h-28 bg-neutral-950/90 rounded-xl border border-red-950 p-2 relative">
+                        
+                        <!-- Mini Spotlights -->
+                        <div class="absolute top-1 left-4 w-2 h-2 rounded-full bg-red-500/50 animate-ping"></div>
+                        <div class="absolute top-1 right-4 w-2 h-2 rounded-full bg-neutral-200/50 animate-ping"></div>
+
+                        <!-- Left Dancer (Me) -->
+                        <div id="dancer-me" class="flex flex-col items-center transition-all duration-300 transform origin-bottom">
+                            <span class="text-[9px] text-neutral-400 font-bold tracking-widest uppercase mb-1">Me</span>
+                            <!-- SVG stick figure with neon styling -->
+                            <div class="w-14 h-14 flex items-center justify-center">
+                                <svg class="w-full h-full text-neutral-300 stroke-current stroke-2 fill-none filter drop-shadow-[0_0_6px_rgba(255,255,255,0.8)]" viewBox="0 0 24 24" id="svg-me">
+                                    <circle cx="12" cy="5" r="2.5" class="fill-neutral-300/10"/>
+                                    <line x1="12" y1="7.5" x2="12" y2="15" />
+                                    <!-- Arms -->
+                                    <line id="me-l-arm" x1="12" y1="9.5" x2="6" y2="8" />
+                                    <line id="me-r-arm" x1="12" y1="9.5" x2="18" y2="12" />
+                                    <!-- Legs -->
+                                    <line id="me-l-leg" x1="12" y1="15" x2="8" y2="22" />
+                                    <line id="me-r-leg" x1="12" y1="15" x2="16" y2="22" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Disco light sphere -->
+                        <div class="absolute top-1 left-1/2 -translate-x-1/2 text-sm animate-bounce">🪩</div>
+
+                        <!-- Right Dancer (Red) -->
+                        <div id="dancer-red" class="flex flex-col items-center transition-all duration-300 transform origin-bottom">
+                            <span class="text-[9px] text-red-500 font-bold tracking-widest uppercase mb-1">Red</span>
+                            <!-- SVG stick figure with neon styling -->
+                            <div class="w-14 h-14 flex items-center justify-center">
+                                <svg class="w-full h-full text-red-500 stroke-current stroke-2 fill-none filter drop-shadow-[0_0_8px_rgba(239,68,68,0.9)]" viewBox="0 0 24 24" id="svg-red">
+                                    <circle cx="12" cy="5" r="2.5" class="fill-red-500/20"/>
+                                    <line x1="12" y1="7.5" x2="12" y2="15" />
+                                    <!-- Arms -->
+                                    <line id="red-l-arm" x1="12" y1="9.5" x2="6" y2="12" />
+                                    <line id="red-r-arm" x1="12" y1="9.5" x2="18" y2="8" />
+                                    <!-- Legs -->
+                                    <line id="red-l-leg" x1="12" y1="15" x2="8" y2="22" />
+                                    <line id="red-r-leg" x1="12" y1="15" x2="16" y2="22" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mini neon tactical buttons -->
+                    <div class="grid grid-cols-4 gap-1.5 w-full mt-3 max-w-[340px]">
+                        <button onclick="triggerDanceMove('spin')" class="bg-red-950/40 hover:bg-red-800 active:scale-95 text-red-400 hover:text-white border border-red-900/40 py-2 px-1 rounded-lg text-[9px] font-bold tracking-wider uppercase transition-all">
+                            🌀 Spin
+                        </button>
+                        <button onclick="triggerDanceMove('jump')" class="bg-red-950/40 hover:bg-red-800 active:scale-95 text-red-400 hover:text-white border border-red-900/40 py-2 px-1 rounded-lg text-[9px] font-bold tracking-wider uppercase transition-all">
+                            🦘 Hop
+                        </button>
+                        <button onclick="triggerDanceMove('funky')" class="bg-red-950/40 hover:bg-red-800 active:scale-95 text-red-400 hover:text-white border border-red-900/40 py-2 px-1 rounded-lg text-[9px] font-bold tracking-wider uppercase transition-all">
+                            🕺 Groovy
+                        </button>
+                        <button onclick="triggerDanceMove('shake')" class="bg-red-950/40 hover:bg-red-800 active:scale-95 text-red-400 hover:text-white border border-red-900/40 py-2 px-1 rounded-lg text-[9px] font-bold tracking-wider uppercase transition-all">
+                            ⚡ Shake
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STAGE TRANSITION ACTION BUTTON -->
+            <div class="w-full flex justify-center pt-2 border-t border-red-950/60">
+                <button onclick="revealPhonographSurprise()" class="relative group bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-bold py-3 px-8 rounded-full shadow-[0_0_25px_rgba(220,38,38,0.45)] hover:shadow-[0_0_35px_rgba(239,68,68,0.7)] hover:scale-105 active:scale-95 transition-all duration-300 text-sm tracking-wider uppercase display-font flex items-center space-x-2">
+                    <span>✨ Open the surprise! ✨</span>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- STAGE 3: THE INTERACTIVE PHONOGRAPH SURPRISE -->
+        <div id="surprise-stage" class="hidden w-full max-w-md glass-panel-dark rounded-3xl p-6 relative flex-col items-center justify-start transition-all duration-700 transform scale-95 opacity-0 text-center">
+            
+            <div class="absolute -top-6 w-36 h-36 bg-red-600/10 rounded-full blur-3xl animate-pulse-slow"></div>
+
+            <h3 class="text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-400 tracking-wide uppercase mb-1 display-font">
+                Red's Birthday | Record 🎙️
+            </h3>
+            <p class="text-xs text-neutral-400 mb-6">A birthday song written by jim. Tap the platter or handle to play the audio file.</p>
+
+            <!-- VECTOR GRAPHICS PHONOGRAPH -->
+            <div class="relative w-full aspect-square max-w-[280px] bg-neutral-950/80 rounded-2xl border border-red-950/60 p-4 mb-6 shadow-2xl flex flex-col items-center justify-center cursor-pointer" onclick="togglePhonographPlayback()">
+                
+                <!-- SVG Phonograph Player -->
+                <svg viewBox="0 0 200 200" class="w-full h-full max-w-[220px] filter drop-shadow-2xl">
+                    <!-- Cabinet shadow/base -->
+                    <rect x="25" y="145" width="150" height="20" rx="4" fill="#000" opacity="0.4"/>
+                    
+                    <!-- Mahogany / Obsidian Solid Base -->
+                    <rect x="20" y="130" width="160" height="22" rx="6" fill="#171717" stroke="#dc2626" stroke-width="1.5"/>
+                    <rect x="24" y="134" width="152" height="14" rx="4" fill="#0a0a0a"/>
+                    
+                    <!-- Gold Accents on Cabinet -->
+                    <circle cx="35" cy="141" r="3" fill="#fbbf24"/>
+                    <circle cx="165" cy="141" r="3" fill="#fbbf24"/>
+                    <!-- Power indicator LED -->
+                    <circle id="phono-led" cx="50" cy="141" r="2" fill="#ef4444" class="transition-colors duration-300"/>
+                    
+                    <!-- Metallic Platter Plinth -->
+                    <ellipse cx="100" cy="110" r="62" fill="#1c1917" stroke="#44403c" stroke-width="1"/>
+                    <ellipse cx="100" cy="110" r="56" fill="#121214"/>
+                    
+                    <!-- Vinyl Record (Spinning layer) -->
+                    <g id="vinyl-record-group" class="vinyl-record">
+                        <circle cx="100" cy="110" r="50" fill="#0c0a09" stroke="#1c1917" stroke-width="2"/>
+                        <!-- Grooves -->
+                        <circle cx="100" cy="110" r="44" fill="none" stroke="#262626" stroke-width="0.5" stroke-dasharray="10 2"/>
+                        <circle cx="100" cy="110" r="38" fill="none" stroke="#262626" stroke-width="0.5"/>
+                        <circle cx="100" cy="110" r="32" fill="none" stroke="#262626" stroke-width="0.5" stroke-dasharray="25 3"/>
+                        <circle cx="100" cy="110" r="26" fill="none" stroke="#262626" stroke-width="0.5"/>
+                        <!-- Center Label (Red/Gold themed) -->
+                        <circle cx="100" cy="110" r="16" fill="#b91c1c" stroke="#f59e0b" stroke-width="1"/>
+                        <circle cx="100" cy="110" r="13" fill="#7f1d1d"/>
+                        <circle cx="100" cy="110" r="3"/>
+                        <!-- Spindle hole text reflection -->
+                        <path d="M90,110 A10,10 0 0,1 110,110" fill="none" stroke="#f59e0b" stroke-width="0.7" opacity="0.6"/>
+                    </g>
+                    
+                    <!-- Golden Vintage Speaker Horn support structure -->
+                    <path d="M35,130 Q30,80 55,60" fill="none" stroke="#d97706" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M55,60 Q70,45 85,55" fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+                    
+                    <!-- Tonearm & Needle Arm assembly (Pivoting segment) -->
+                    <g id="phono-tonearm" class="tonearm">
+                        <!-- Pivot support base -->
+                        <circle cx="175" cy="45" r="10" fill="#262626" stroke="#fbbf24" stroke-width="1.5"/>
+                        <circle cx="175" cy="45" r="4" fill="#fbbf24"/>
+                        <!-- Balanced weight bar -->
+                        <rect x="160" y="42" width="20" height="6" rx="1" fill="#404040" stroke="#737373" stroke-width="0.5"/>
+                        <!-- Long Arm wand -->
+                        <path d="M175,45 L150,110 L128,110" fill="none" stroke="#d4d4d8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+                        <!-- Cartridge headshell and stylus needle -->
+                        <polygon points="128,106 122,109 122,114 128,112" fill="#fbbf24" stroke="#d97706" stroke-width="0.5"/>
+                        <line x1="123" y1="113" x2="124" y2="117" stroke="#d4d4d8" stroke-width="1"/>
+                    </g>
+                </svg>
+
+                <!-- Floating Music Notes/Sparks when playing -->
+                <div id="playing-waves" class="absolute inset-x-0 bottom-3 h-8 flex justify-center items-end space-x-1 opacity-0 transition-opacity duration-300">
+                    <div class="w-1 bg-red-600 wave-bar h-5"></div>
+                    <div class="w-1 bg-amber-500 wave-bar h-8"></div>
+                    <div class="w-1 bg-red-500 wave-bar h-6"></div>
+                    <div class="w-1 bg-yellow-400 wave-bar h-9"></div>
+                    <div class="w-1 bg-red-700 wave-bar h-4"></div>
+                </div>
+            </div>
+
+            <!-- PHONOGRAPH INTERACTIVE FEEDBACK -->
+            <div class="bg-black/40 rounded-2xl p-4 border border-red-950 w-full max-w-[280px] mb-6">
+                <p id="player-status-label" class="text-xs text-red-400 font-bold uppercase tracking-widest display-font animate-pulse">
+                    ⏸️ Player Paused
+                </p>
+                <div class="flex items-center justify-center space-x-4 mt-3">
+                    <button onclick="togglePhonographPlayback()" id="phono-play-btn" class="bg-red-600 hover:bg-red-500 text-white rounded-full p-2 w-10 h-10 flex items-center justify-center font-bold text-sm shadow-md active:scale-95 transition-all border border-red-400/20">
+                        ▶️
+                    </button>
+                    <!-- Vintage Pitch/Speed adjustment widget -->
+                    <div class="flex flex-col items-start">
+                        <span class="text-[8px] text-neutral-500 uppercase font-extrabold tracking-widest">Speed Control</span>
+                        <div class="flex space-x-1 mt-1">
+                            <button onclick="changePhonographSpeed(33)" id="speed-33" class="bg-red-950 text-red-400 font-extrabold text-[9px] px-2.5 py-1 rounded-md border border-red-900/40">33 RPM</button>
+                            <button onclick="changePhonographSpeed(45)" id="speed-45" class="bg-neutral-800 text-neutral-400 font-extrabold text-[9px] px-2.5 py-1 rounded-md">45 RPM</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+       
+            <!-- Return button -->
+            <button onclick="returnToMainCard()" class="text-neutral-500 hover:text-red-400 transition-colors text-[10px] uppercase font-bold tracking-widest mt-6">
+                ⬅️ Back to Red's Celebration
+            </button>
+
+        </div>
+    </main>
+
+    <!-- Page Footer styling -->
+    <footer class="w-full text-center text-[10px] text-red-700/60 py-2 mt-4 z-10 tracking-widest uppercase">
+        Created for Red with love | Food Gang | jim
+    </footer>
+
+    <script>
+        /**************************************************************
+         * PROCEDURAL SOUND EFFECT GENERATOR (Synthesized via Web Audio API)
+         * Perfectly self-contained, no network latency, 100% reliable sound.
+         **************************************************************/
+        class ModernAudioEngine {
+            constructor() {
+                this.ctx = null;
+                this.muted = false;
+                this.songTimer = null;
+                this.isPlayingSong = false;
+                this.birthdayGainNode = null; // Master channel for birthday song melody
+                
+                // Phonograph Player & FX Nodes
+                this.isPhonoPlaying = false;
+                this.phonoSpeed = 33; // 33 or 45
+                this.crackleTimer = null;
+                this.gainNodePhono = null;
+                this.proceduralInterval = null;
+                this.isProceduralFallbackActive = false;
+
+                // Real music file source - Cozy piano jazz
+                this.phonoAudioUrl = "https://upload.wikimedia.org/wikipedia/commons/3/3e/Groove_Grove_%28ISRC_USUAN1200054%29.mp3";
+                this.phonoAudio = null;
+            }
+
+            init() {
+                if (!this.ctx) {
+                    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (this.ctx.state === 'suspended') {
+                    this.ctx.resume();
+                }
+                
+                // Instantiate phonograph audio object once, with no CORS blockers
+                if (!this.phonoAudio) {
+                    this.phonoAudio = new Audio(this.phonoAudioUrl);
+                    this.phonoAudio.loop = true;
+                    this.phonoAudio.volume = this.muted ? 0 : 0.65;
+                }
+            }
+
+            playSfx(type) {
+                if (this.muted) return;
+                this.init();
+
+                try {
+                    const now = this.ctx.currentTime;
+                    
+                    switch (type) {
+                        case 'open': // Open envelope chime swoosh
+                            this.synthesizeSwoosh(now);
+                            break;
+                        case 'blow': // Wind puff noise
+                            this.synthesizeWindBlow(now);
+                            break;
+                        case 'confetti': // Confetti tiny pops
+                            this.synthesizeSparklePops(now);
+                            break;
+                        case 'dance': // Synth sub drum drop
+                            this.synthesizeDanceBeat(now);
+                            break;
+                        case 'success': // Beautiful major dynamic chord sweep
+                            this.synthesizeVictoryFanfare(now);
+                            break;
+                    }
+                } catch (e) {
+                    console.warn("Audio trigger suspended or blocked by user: ", e);
+                }
+            }
+
+            synthesizeSwoosh(now) {
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(300, now);
+                osc.frequency.exponentialRampToValueAtTime(1200, now + 0.4);
+                
+                gain.gain.setValueAtTime(0.01, now);
+                gain.gain.linearRampToValueAtTime(0.15, now + 0.15);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+                
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.4);
+            }
+
+            synthesizeWindBlow(now) {
+                const bufferSize = this.ctx.sampleRate * 0.25;
+                const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1;
+                }
+                
+                const noise = this.ctx.createBufferSource();
+                noise.buffer = buffer;
+                
+                const filter = this.ctx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(800, now);
+                filter.frequency.exponentialRampToValueAtTime(80, now + 0.2);
+                
+                const gain = this.ctx.createGain();
+                gain.gain.setValueAtTime(0.25, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+                
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(this.ctx.destination);
+                
+                noise.start(now);
+                noise.stop(now + 0.25);
+            }
+
+            synthesizeSparklePops(now) {
+                const freqs = [700, 900, 1100, 1300];
+                freqs.forEach((freq, idx) => {
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, now + idx * 0.04);
+                    
+                    gain.gain.setValueAtTime(0.08, now + idx * 0.04);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.04 + 0.12);
+                    
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start(now + idx * 0.04);
+                    osc.stop(now + idx * 0.04 + 0.12);
+                });
+            }
+
+            synthesizeDanceBeat(now) {
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(160, now);
+                osc.frequency.exponentialRampToValueAtTime(45, now + 0.15);
+                
+                gain.gain.setValueAtTime(0.35, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+                
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.18);
+            }
+
+            synthesizeVictoryFanfare(now) {
+                const melody = [523.25, 659.25, 783.99, 1046.50]; // Beautiful C major sweep
+                melody.forEach((noteFreq, idx) => {
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(noteFreq, now + idx * 0.06);
+                    
+                    gain.gain.setValueAtTime(0.12, now + idx * 0.06);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + 0.5);
+                    
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start(now + idx * 0.06);
+                    osc.stop(now + idx * 0.06 + 0.5);
+                });
+            }
+
+            playHappyBirthdayTheme() {
+                this.init();
+                if (this.isPlayingSong) {
+                    this.stopHappyBirthdayTheme();
+                    return;
+                }
+
+                this.isPlayingSong = true;
+                
+                // Create master gain node for the song to allow immediate stopping/disconnecting
+                if (!this.birthdayGainNode) {
+                    this.birthdayGainNode = this.ctx.createGain();
+                }
+                this.birthdayGainNode.connect(this.ctx.destination);
+                this.birthdayGainNode.gain.setValueAtTime(this.muted ? 0 : 1, this.ctx.currentTime);
+
+                const tempo = 0.68;
+                
+                // Pure procedural melody notes
+                const song = [
+                    { f: 261.63, d: 0.5 }, { f: 261.63, d: 0.5 },
+                    { f: 293.66, d: 1 },
+                    { f: 261.63, d: 1 },
+                    { f: 349.23, d: 1 },
+                    { f: 329.63, d: 2 },
+                    
+                    { f: 261.63, d: 0.5 }, { f: 261.63, d: 0.5 },
+                    { f: 293.66, d: 1 },
+                    { f: 261.63, d: 1 },
+                    { f: 392.00, d: 1 },
+                    { f: 349.23, d: 2 },
+                    
+                    { f: 261.63, d: 0.5 }, { f: 261.63, d: 0.5 },
+                    { f: 523.25, d: 1 },
+                    { f: 440.00, d: 1 },
+                    { f: 349.23, d: 1 },
+                    { f: 329.63, d: 1 },
+                    { f: 293.66, d: 1 },
+                    
+                    { f: 466.16, d: 0.5 }, { f: 466.16, d: 0.5 },
+                    { f: 440.00, d: 1 },
+                    { f: 349.23, d: 1 },
+                    { f: 392.00, d: 1 },
+                    { f: 349.23, d: 2 }
+                ];
+
+                let accumTime = 0.02;
+
+                const renderNote = (note) => {
+                    const oscPrimary = this.ctx.createOscillator();
+                    const oscHarmonic = this.ctx.createOscillator();
+                    const gainNode = this.ctx.createGain();
+                    
+                    oscPrimary.type = 'triangle';
+                    oscHarmonic.type = 'sine';
+                    
+                    const triggerTime = this.ctx.currentTime + accumTime;
+                    const duration = note.d * tempo;
+                    
+                    oscPrimary.frequency.setValueAtTime(note.f, triggerTime);
+                    oscHarmonic.frequency.setValueAtTime(note.f * 1.5, triggerTime); // Pure harmony ratio
+                    
+                    gainNode.gain.setValueAtTime(0, triggerTime);
+                    gainNode.gain.linearRampToValueAtTime(0.12, triggerTime + 0.05);
+                    gainNode.gain.exponentialRampToValueAtTime(0.001, triggerTime + duration - 0.02);
+                    
+                    oscPrimary.connect(gainNode);
+                    oscHarmonic.connect(gainNode);
+                    // Connect notes directly to our master song channel instead of destination
+                    gainNode.connect(this.birthdayGainNode);
+                    
+                    oscPrimary.start(triggerTime);
+                    oscPrimary.stop(triggerTime + duration);
+                    oscHarmonic.start(triggerTime);
+                    oscHarmonic.stop(triggerTime + duration);
+                    
+                    accumTime += duration;
+                };
+
+                song.forEach(note => renderNote(note));
+
+                // Clean looping
+                this.songTimer = setTimeout(() => {
+                    this.isPlayingSong = false;
+                    this.playHappyBirthdayTheme();
+                }, (accumTime * 1000));
+            }
+
+            stopHappyBirthdayTheme() {
+                clearTimeout(this.songTimer);
+                this.isPlayingSong = false;
+                if (this.birthdayGainNode) {
+                    try {
+                        this.birthdayGainNode.disconnect();
+                    } catch(e){}
+                    this.birthdayGainNode = null;
+                }
+            }
+
+            /**************************************************************
+             * REAL AUDIO FILE PLAYER WITH WEB AUDIO PROCEDURAL FALLBACK
+             **************************************************************/
+            startPhonographSynth() {
+                this.init();
+                if (this.isPhonoPlaying) return;
+                this.isPhonoPlaying = true;
+                this.isProceduralFallbackActive = false;
+
+                // Synchronous gesture invocation of media element
+                if (this.phonoAudio) {
+                    this.phonoAudio.volume = this.muted ? 0 : 0.65;
+                    this.phonoAudio.playbackRate = this.phonoSpeed === 45 ? 1.3 : 1.0;
+                    this.phonoAudio.play()
+                    .then(() => {
+                        console.log("Vinyl audio file played successfully!");
+                    })
+                    .catch(e => {
+                        console.warn("Audio file blocked or not responding. Launching beautiful real-time procedural synthesizer fallback!", e);
+                        this.isProceduralFallbackActive = true;
+                        this.startProceduralPhonographMelody();
+                    });
+                } else {
+                    this.isProceduralFallbackActive = true;
+                    this.startProceduralPhonographMelody();
+                }
+
+                // Master output gain node for ambient lo-fi static crackle track (always play this cozy crackle!)
+                this.gainNodePhono = this.ctx.createGain();
+                this.gainNodePhono.gain.setValueAtTime(this.muted ? 0 : 0.22, this.ctx.currentTime);
+                
+                // Vintage bandpass filter (lo-fi AM radio curves for crackles)
+                const retroFilter = this.ctx.createBiquadFilter();
+                retroFilter.type = 'bandpass';
+                retroFilter.frequency.setValueAtTime(1000, this.ctx.currentTime); 
+                retroFilter.Q.setValueAtTime(1.2, this.ctx.currentTime);
+
+                this.gainNodePhono.connect(retroFilter);
+                retroFilter.connect(this.ctx.destination);
+
+                // Live generation of random authentic vinyl pops & clicks
+                const generateVinylCrackles = () => {
+                    if (!this.isPhonoPlaying) return;
+                    
+                    const now = this.ctx.currentTime;
+                    if (Math.random() > 0.3) {
+                        const popOsc = this.ctx.createOscillator();
+                        const popGain = this.ctx.createGain();
+                        
+                        popOsc.type = 'sine';
+                        popOsc.frequency.setValueAtTime(Math.random() * 800 + 100, now);
+                        
+                        popGain.gain.setValueAtTime(Math.random() * 0.02 + 0.005, now);
+                        popGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.012);
+                        
+                        popOsc.connect(popGain);
+                        popGain.connect(retroFilter);
+                        
+                        popOsc.start(now);
+                        popOsc.stop(now + 0.012);
+                    }
+                    
+                    this.crackleTimer = setTimeout(generateVinylCrackles, Math.random() * 200 + 50);
+                };
+                generateVinylCrackles();
+            }
+
+            startProceduralPhonographMelody() {
+                if (this.proceduralInterval) clearInterval(this.proceduralInterval);
+
+                // Cozy jazz chord progression for vinyl fallback (Gmaj7 -> Am7 -> Em7 -> Cmaj7)
+                const chords = [
+                    [196.00, 246.94, 293.66, 392.00], 
+                    [220.00, 261.63, 329.63, 440.00], 
+                    [164.81, 196.00, 246.94, 329.63], 
+                    [130.81, 196.00, 261.63, 329.63]  
+                ];
+                
+                let chordStep = 0;
+                const playNextProceduralChord = () => {
+                    if (!this.isPhonoPlaying) return;
+                    const now = this.ctx.currentTime;
+                    const chord = chords[chordStep % chords.length];
+                    const speedMultiplier = this.phonoSpeed === 45 ? 0.75 : 1.0; // Play faster at 45 RPM
+                    
+                    chord.forEach((baseFreq) => {
+                        const freq = baseFreq * (this.phonoSpeed === 45 ? 1.3 : 1.0); // pitch shift up at 45 rpm
+                        const osc = this.ctx.createOscillator();
+                        const gain = this.ctx.createGain();
+                        
+                        // Mild 'wow/flutter' vibrato
+                        const lfo = this.ctx.createOscillator();
+                        const lfoGain = this.ctx.createGain();
+                        lfo.frequency.setValueAtTime(4.2, now);
+                        lfoGain.gain.setValueAtTime(freq * 0.007, now);
+                        
+                        lfo.connect(lfoGain);
+                        lfoGain.connect(osc.frequency);
+                        
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(freq, now);
+                        
+                        gain.gain.setValueAtTime(0, now);
+                        gain.gain.linearRampToValueAtTime(this.muted ? 0 : 0.08, now + 0.4);
+                        gain.gain.exponentialRampToValueAtTime(0.0001, now + (3.0 * speedMultiplier));
+                        
+                        osc.connect(gain);
+                        gain.connect(this.ctx.destination);
+                        
+                        lfo.start(now);
+                        osc.start(now);
+                        
+                        lfo.stop(now + (3.0 * speedMultiplier));
+                        osc.stop(now + (3.0 * speedMultiplier));
+                    });
+                    
+                    chordStep++;
+                    this.proceduralInterval = setTimeout(playNextProceduralChord, 3000 * speedMultiplier);
+                };
+                
+                playNextProceduralChord();
+            }
+
+            stopProceduralPhonographMelody() {
+                if (this.proceduralInterval) {
+                    clearTimeout(this.proceduralInterval);
+                    this.proceduralInterval = null;
+                }
+            }
+
+            stopPhonographSynth() {
+                this.isPhonoPlaying = false;
+                clearTimeout(this.crackleTimer);
+                this.stopProceduralPhonographMelody();
+                
+                // Pause the physical audio stream
+                if (this.phonoAudio) {
+                    this.phonoAudio.pause();
+                }
+
+                if (this.gainNodePhono) {
+                    try {
+                        this.gainNodePhono.disconnect();
+                    } catch(e){}
+                    this.gainNodePhono = null;
+                }
+            }
+
+            setMuted(isMuted) {
+                this.muted = isMuted;
+                if (this.phonoAudio) {
+                    this.phonoAudio.volume = isMuted ? 0 : 0.65;
+                }
+                if (this.gainNodePhono) {
+                    this.gainNodePhono.gain.setValueAtTime(isMuted ? 0 : 0.22, this.ctx.currentTime);
+                }
+                if (this.birthdayGainNode) {
+                    this.birthdayGainNode.gain.setValueAtTime(isMuted ? 0 : 1, this.ctx.currentTime);
+                }
+            }
+        }
+
+        const audioEngine = new ModernAudioEngine();
+
+        // Control Panel Listeners
+        document.getElementById('toggle-music').addEventListener('click', () => {
+            audioEngine.init();
+            const textElement = document.getElementById('music-btn-text');
+            if (audioEngine.isPlayingSong) {
+                audioEngine.stopHappyBirthdayTheme();
+                textElement.innerText = "Play Song";
+                document.getElementById('toggle-music').classList.remove('bg-red-950/70');
+            } else {
+                // If phonograph is playing, mute/pause it first to avoid collision
+                if (audioEngine.isPhonoPlaying) {
+                    togglePhonographPlayback();
+                }
+                audioEngine.playHappyBirthdayTheme();
+                textElement.innerText = "Pause Song";
+                document.getElementById('toggle-music').classList.add('bg-red-950/70');
+            }
+        });
+
+        document.getElementById('mute-sfx').addEventListener('click', (e) => {
+            audioEngine.muted = !audioEngine.muted;
+            audioEngine.setMuted(audioEngine.muted);
+            e.currentTarget.innerText = audioEngine.muted ? "🔇" : "🔊";
+            e.currentTarget.classList.toggle('bg-red-950/40');
+        });
+    </script>
+
+    <script>
+        /**************************************************************
+         * CARD REVEAL AND INTERACTIVE STAGE FLOW
+         **************************************************************/
+        function openBirthdayCard() {
+            // First user activation unlock
+            audioEngine.init();
+            audioEngine.playSfx('open');
+            
+            const envelopeStage = document.getElementById('envelope-stage');
+            const envelope = document.getElementById('envelope-element');
+            const cardStage = document.getElementById('card-stage');
+            
+            envelope.classList.add('open');
+            
+            // Switch view layers flawlessly
+            setTimeout(() => {
+                envelopeStage.classList.add('opacity-0', 'scale-95');
+                
+                setTimeout(() => {
+                    envelopeStage.classList.add('hidden');
+                    cardStage.classList.remove('hidden');
+                    
+                    // Fire layout redraws
+                    cardStage.offsetHeight;
+                    
+                    cardStage.classList.remove('opacity-0', 'scale-95');
+                    cardStage.classList.add('opacity-100', 'scale-100', 'flex');
+                    
+                    // Activate live interactive systems
+                    initializeConfettiField();
+                    audioEngine.playSfx('success');
+                    
+                    // Prompt automatic background melody
+                    setTimeout(() => {
+                        if (!audioEngine.isPlayingSong && !audioEngine.isPhonoPlaying) {
+                            audioEngine.playHappyBirthdayTheme();
+                            document.getElementById('music-btn-text').innerText = "Pause Song";
+                            document.getElementById('toggle-music').classList.add('bg-red-950/70');
+                        }
+                    }, 400);
+
+                }, 400);
+            }, 1000);
+        }
+
+        /**************************************************************
+         * INTERACTIVE BLOW-OUT CANDLES SYSTEM
+         **************************************************************/
+        let blownCandleCount = 0;
+        const totalCandleGroup = 3;
+
+        function extinguishCandle(id) {
+            const candle = document.getElementById(`candle-${id}`);
+            const flame = candle.querySelector('.flame');
+            
+            if (flame.classList.contains('hidden')) return;
+            
+            audioEngine.playSfx('blow');
+            flame.classList.add('hidden');
+            blownCandleCount++;
+
+            candle.classList.add('scale-95', 'opacity-65');
+            
+            // Micro sparks near the candle coordinates
+            sparkleSparks();
+
+            validateCandleStatus();
+        }
+
+        function blowAllCandles() {
+            for (let i = 1; i <= totalCandleGroup; i++) {
+                const candle = document.getElementById(`candle-${i}`);
+                const flame = candle.querySelector('.flame');
+                if (!flame.classList.contains('hidden')) {
+                    flame.classList.add('hidden');
+                    candle.classList.add('scale-95', 'opacity-65');
+                }
+            }
+            audioEngine.playSfx('blow');
+            blownCandleCount = totalCandleGroup;
+            validateCandleStatus();
+        }
+
+        function relightCandles() {
+            for (let i = 1; i <= totalCandleGroup; i++) {
+                const candle = document.getElementById(`candle-${i}`);
+                const flame = candle.querySelector('.flame');
+                flame.classList.remove('hidden');
+                candle.classList.remove('scale-95', 'opacity-65');
+            }
+            blownCandleCount = 0;
+            document.getElementById('relight-btn').classList.add('hidden');
+            
+            const stateText = document.getElementById('cake-instruction');
+            stateText.innerText = "🕯️ Tap candles to blow them out! 🕯️";
+            stateText.className = "text-[10px] font-bold text-red-400 mb-3 animate-pulse uppercase tracking-widest display-font";
+        }
+
+        function validateCandleStatus() {
+            if (blownCandleCount === totalCandleGroup) {
+                audioEngine.playSfx('success');
+                sprayGalaConfetti();
+                
+                const stateText = document.getElementById('cake-instruction');
+                stateText.innerText = "✨ You blew out all the candles! Happy Birthday, Red! ✨";
+                stateText.className = "text-[10px] font-bold text-emerald-500 mb-3 animate-bounce uppercase tracking-widest display-font";
+                
+                document.getElementById('relight-btn').classList.remove('hidden');
+            }
+        }
+
+        /**************************************************************
+         * CANVAS PARTICLE CONFETTI CONTROLLER
+         **************************************************************/
+        const canvas = document.getElementById('confetti-canvas');
+        const canvasCtx = canvas.getContext('2d');
+        let particles = [];
+        let animationTicker = null;
+
+        function resizeConfettiCanvas() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+        }
+        window.addEventListener('resize', resizeConfettiCanvas);
+        setTimeout(resizeConfettiCanvas, 600);
+
+        class ConfettiBit {
+            constructor(x, y, isExplosion = false) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 5 + 3;
+                
+                // Sleek red, obsidian, gold and silver/white theme colors
+                const themeColors = [
+                    'hsl(0, 85%, 55%)',    // Crimson Red
+                    'hsl(0, 95%, 40%)',    // Dark Ruby
+                    'hsl(45, 95%, 60%)',   // Rich Gold
+                    'hsl(0, 0%, 95%)',     // Pure Silver
+                    'hsl(0, 0%, 15%)'      // Obsidian Charcoal
+                ];
+                this.color = themeColors[Math.floor(Math.random() * themeColors.length)];
+                
+                if (isExplosion) {
+                    const radiusAngle = Math.random() * Math.PI * 2;
+                    const acceleration = Math.random() * 5 + 2;
+                    this.vx = Math.cos(radiusAngle) * acceleration;
+                    this.vy = Math.sin(radiusAngle) * acceleration - 1;
+                } else {
+                    this.vx = Math.random() * 1.6 - 0.8;
+                    this.vy = Math.random() * 2.5 + 1.5;
+                }
+                
+                this.angle = Math.random() * 360;
+                this.spin = Math.random() * 8 - 4;
+                this.opacity = 1;
+                this.decay = isExplosion ? 0.015 : 0.006;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.angle += this.spin;
+                this.opacity -= this.decay;
+                if (this.opacity < 0) this.opacity = 0;
+            }
+
+            render() {
+                canvasCtx.save();
+                canvasCtx.translate(this.x, this.y);
+                canvasCtx.rotate(this.angle * Math.PI / 180);
+                canvasCtx.globalAlpha = this.opacity;
+                canvasCtx.fillStyle = this.color;
+                canvasCtx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                canvasCtx.restore();
+            }
+        }
+
+        function initializeConfettiField() {
+            if (animationTicker) clearInterval(animationTicker);
+            animationTicker = setInterval(() => {
+                if (particles.length < 100) {
+                    particles.push(new ConfettiBit(Math.random() * canvas.width, -10));
+                }
+            }, 110);
+
+            function runConfettiLoop() {
+                canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                for (let i = particles.length - 1; i >= 0; i--) {
+                    const item = particles[i];
+                    item.update();
+                    item.render();
+                    if (item.opacity <= 0 || item.y > canvas.height + 15) {
+                        particles.splice(i, 1);
+                    }
+                }
+                requestAnimationFrame(runConfettiLoop);
+            }
+            runConfettiLoop();
+        }
+
+        function sparkleSparks() {
+            audioEngine.playSfx('confetti');
+            const targetX = canvas.width / 2;
+            const targetY = canvas.height * 0.42;
+            for (let i = 0; i < 15; i++) {
+                particles.push(new ConfettiBit(targetX, targetY, true));
+            }
+        }
+
+        function sprayGalaConfetti() {
+            audioEngine.playSfx('success');
+            const triggers = [
+                {x: canvas.width * 0.15, y: canvas.height * 0.8},
+                {x: canvas.width * 0.5, y: canvas.height * 0.5},
+                {x: canvas.width * 0.85, y: canvas.height * 0.8}
+            ];
+
+            triggers.forEach(pt => {
+                for (let i = 0; i < 35; i++) {
+                    particles.push(new ConfettiBit(pt.x, pt.y, true));
+                }
+            });
+        }
+
+        /**************************************************************
+         * INTERACTIVE RED & ME DANCE DUET ARENA
+         **************************************************************/
+        const dancerMe = document.getElementById('dancer-me');
+        const dancerRed = document.getElementById('dancer-red');
+        
+        // Target SVGs to animate nodes
+        const meLArm = document.getElementById('me-l-arm');
+        const meRArm = document.getElementById('me-r-arm');
+        const meLLeg = document.getElementById('me-l-leg');
+        const meRLeg = document.getElementById('me-r-leg');
+
+        const redLArm = document.getElementById('red-l-arm');
+        const redRArm = document.getElementById('red-r-arm');
+        const redLLeg = document.getElementById('red-l-leg');
+        const redRLeg = document.getElementById('red-r-leg');
+
+        function triggerDanceMove(style) {
+            audioEngine.playSfx('dance');
+            sparkleSparks();
+
+            // Clear previous styles safely
+            dancerMe.className = "flex flex-col items-center transition-all duration-300 transform origin-bottom";
+            dancerRed.className = "flex flex-col items-center transition-all duration-300 transform origin-bottom";
+
+            if (style === 'spin') {
+                dancerMe.classList.add('rotate-[360deg]', 'scale-105');
+                dancerRed.classList.add('-rotate-[360deg]', 'scale-105');
+                
+                meLArm.setAttribute('x2', '3'); meLArm.setAttribute('y2', '5');
+                meRArm.setAttribute('x2', '21'); meRArm.setAttribute('y2', '5');
+                redLArm.setAttribute('x2', '3'); redLArm.setAttribute('y2', '5');
+                redRArm.setAttribute('x2', '21'); redRArm.setAttribute('y2', '5');
+            } 
+            else if (style === 'jump') {
+                dancerMe.classList.add('-translate-y-6', 'scale-95');
+                dancerRed.classList.add('-translate-y-6', 'scale-95');
+                
+                meLLeg.setAttribute('x2', '10'); meLLeg.setAttribute('y2', '17');
+                meRLeg.setAttribute('x2', '14'); meRLeg.setAttribute('y2', '17');
+                redLLeg.setAttribute('x2', '10'); redLLeg.setAttribute('y2', '17');
+                redRLeg.setAttribute('x2', '14'); redRLeg.setAttribute('y2', '17');
+            }
+            else if (style === 'funky') {
+                dancerMe.classList.add('skew-x-12', 'translate-x-1.5');
+                dancerRed.classList.add('-skew-x-12', '-translate-x-1.5');
+                
+                meLArm.setAttribute('x2', '4'); meLArm.setAttribute('y2', '13');
+                meRArm.setAttribute('x2', '20'); meRArm.setAttribute('y2', '6');
+                redLArm.setAttribute('x2', '4'); redLArm.setAttribute('y2', '6');
+                redRArm.setAttribute('x2', '20'); redRArm.setAttribute('y2', '13');
+            }
+            else if (style === 'shake') {
+                dancerMe.classList.add('animate-bounce');
+                dancerRed.classList.add('animate-bounce');
+                
+                meLArm.setAttribute('x2', '4'); meLArm.setAttribute('y2', '10');
+                meRArm.setAttribute('x2', '20'); meRArm.setAttribute('y2', '10');
+                redLArm.setAttribute('x2', '4'); redLArm.setAttribute('y2', '10');
+                redRArm.setAttribute('x2', '20'); redRArm.setAttribute('y2', '10');
+            }
+
+            // Restore neutral dance frames after delay
+            setTimeout(() => {
+                dancerMe.classList.remove('rotate-[360deg]', 'scale-105', '-translate-y-6', 'scale-95', 'skew-x-12', 'translate-x-1.5');
+                dancerRed.classList.remove('-rotate-[360deg]', 'scale-105', '-translate-y-6', 'scale-95', '-skew-x-12', '-translate-x-1.5');
+                
+                // Return vector coordinate values
+                meLArm.setAttribute('x2', '6'); meLArm.setAttribute('y2', '8');
+                meRArm.setAttribute('x2', '18'); meRArm.setAttribute('y2', '12');
+                meLLeg.setAttribute('x2', '8'); meLLeg.setAttribute('y2', '22');
+                meRLeg.setAttribute('x2', '16'); meRLeg.setAttribute('y2', '22');
+
+                redLArm.setAttribute('x2', '6'); redLArm.setAttribute('y2', '12');
+                redRArm.setAttribute('x2', '18'); redRArm.setAttribute('y2', '8');
+                redLLeg.setAttribute('x2', '8'); redLLeg.setAttribute('y2', '22');
+                redRLeg.setAttribute('x2', '16'); redRLeg.setAttribute('y2', '22');
+            }, 550);
+        }
+
+        /**************************************************************
+         * AMBIENT FLOATING BUBBLES GENERATOR
+         **************************************************************/
+        const bubbleContainer = document.getElementById('bubble-container');
+
+        function generateBubbles() {
+            bubbleContainer.innerHTML = ''; // prevent duplicates
+            for (let i = 0; i < 15; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('floating-bubble');
+                
+                const widthHeight = Math.random() * 20 + 8; // elegant smaller ember sizes
+                const leftPercentage = Math.random() * 100;
+                const delay = Math.random() * 12;
+                const duration = Math.random() * 6 + 10;
+
+                bubble.style.width = `${widthHeight}px`;
+                bubble.style.height = `${widthHeight}px`;
+                bubble.style.left = `${leftPercentage}%`;
+                bubble.style.animationDelay = `${delay}s`;
+                bubble.style.animationDuration = `${duration}s`;
+
+                bubbleContainer.appendChild(bubble);
+            }
+        }
+
+        /**************************************************************
+         * NEW SURPRISE TRANSITIONS & VINTAGE SYSTEM DYNAMICS
+         **************************************************************/
+        function revealPhonographSurprise() {
+            // Guarantee Web Audio activation state
+            audioEngine.init();
+            audioEngine.playSfx('open');
+            
+            // Stop Happy Birthday track immediately
+            audioEngine.stopHappyBirthdayTheme();
+            const songBtnText = document.getElementById('music-btn-text');
+            songBtnText.innerText = "Play Song";
+            document.getElementById('toggle-music').classList.remove('bg-red-950/70');
+
+            const cardStage = document.getElementById('card-stage');
+            const surpriseStage = document.getElementById('surprise-stage');
+
+            cardStage.classList.add('opacity-0', 'scale-95');
+            
+            setTimeout(() => {
+                cardStage.classList.add('hidden');
+                surpriseStage.classList.remove('hidden');
+                
+                // Refresh height boundaries
+                surpriseStage.offsetHeight;
+
+                surpriseStage.classList.remove('opacity-0', 'scale-95');
+                surpriseStage.classList.add('opacity-100', 'scale-100', 'flex');
+                
+                // Mini feedback fanfare
+                audioEngine.playSfx('success');
+            }, 500);
+        }
+
+        function returnToMainCard() {
+            // Stop active record audio
+            if (audioEngine.isPhonoPlaying) {
+                togglePhonographPlayback();
+            }
+
+            audioEngine.playSfx('open');
+            const cardStage = document.getElementById('card-stage');
+            const surpriseStage = document.getElementById('surprise-stage');
+
+            surpriseStage.classList.add('opacity-0', 'scale-95');
+
+            setTimeout(() => {
+                surpriseStage.classList.add('hidden');
+                cardStage.classList.remove('hidden');
+
+                cardStage.offsetHeight;
+                cardStage.classList.remove('opacity-0', 'scale-95');
+                cardStage.classList.add('opacity-100', 'scale-100', 'flex');
+            }, 500);
+        }
+
+        /**************************************************************
+         * PHONOGRAPH INTERACTION SYSTEM (Pivoting, spinning and audio stream play)
+         **************************************************************/
+        function togglePhonographPlayback() {
+            audioEngine.init();
+            
+            const vinyl = document.getElementById('vinyl-record-group');
+            const tonearm = document.getElementById('phono-tonearm');
+            const led = document.getElementById('phono-led');
+            const waves = document.getElementById('playing-waves');
+            const statusLabel = document.getElementById('player-status-label');
+            const playBtn = document.getElementById('phono-play-btn');
+
+            if (audioEngine.isPhonoPlaying) {
+                // Pause it
+                audioEngine.stopPhonographSynth();
+                
+                vinyl.classList.remove('spinning');
+                tonearm.classList.remove('active');
+                
+                led.setAttribute('fill', '#ef4444'); // Red Indicator
+                waves.classList.add('opacity-0');
+                statusLabel.innerText = "⏸️ Player Paused";
+                statusLabel.classList.add('animate-pulse');
+                playBtn.innerText = "▶️";
+                
+                audioEngine.playSfx('blow'); // Mechanical sound cue
+            } else {
+                // Play it
+                // First stop main happy birthday song to avoid overlapping sound channels
+                if (audioEngine.isPlayingSong) {
+                    audioEngine.stopHappyBirthdayTheme();
+                    document.getElementById('music-btn-text').innerText = "Play Song";
+                    document.getElementById('toggle-music').classList.remove('bg-red-950/70');
+                }
+
+                // CRITICAL FIX: Trigger play sequence synchronously on the click thread.
+                // This guarantees Safari and iOS will authorize playback, resolving the silence bug.
+                audioEngine.startPhonographSynth();
+
+                // Smoothly swing tonearm
+                tonearm.classList.add('active');
+                led.setAttribute('fill', '#f59e0b'); // Warm Gold working indicator
+                statusLabel.innerText = "⚡ Preparing Groove...";
+                
+                setTimeout(() => {
+                    if (!audioEngine.isPhonoPlaying) return; // Abort if cancelled during transit
+                    
+                    vinyl.classList.add('spinning');
+                    waves.classList.remove('opacity-0');
+                    led.setAttribute('fill', '#10b981'); // Emerald Ready Indicator
+                    
+                    const origin = audioEngine.isProceduralFallbackActive ? "Live Web Synth" : "MP3 Stream";
+                    statusLabel.innerText = `🎵 Playing via ${origin} at ${audioEngine.phonoSpeed} RPM`;
+                    statusLabel.classList.remove('animate-pulse');
+                    playBtn.innerText = "⏸️";
+                }, 800);
+            }
+        }
+
+        function changePhonographSpeed(rpm) {
+            audioEngine.phonoSpeed = rpm;
+            
+            const s33 = document.getElementById('speed-33');
+            const s45 = document.getElementById('speed-45');
+            const vinyl = document.getElementById('vinyl-record-group');
+
+            if (rpm === 33) {
+                s33.className = "bg-red-950 text-red-400 font-extrabold text-[9px] px-2.5 py-1 rounded-md border border-red-900/40";
+                s45.className = "bg-neutral-800 text-neutral-400 font-extrabold text-[9px] px-2.5 py-1 rounded-md";
+                vinyl.style.animationDuration = "2.4s"; // Standard elegant spin
+            } else {
+                s45.className = "bg-red-950 text-red-400 font-extrabold text-[9px] px-2.5 py-1 rounded-md border border-red-900/40";
+                s33.className = "bg-neutral-800 text-neutral-400 font-extrabold text-[9px] px-2.5 py-1 rounded-md";
+                vinyl.style.animationDuration = "1.6s"; // Fast energetic spin
+            }
+
+            // Adjust audio playback speed dynamically
+            if (audioEngine.phonoAudio) {
+                audioEngine.phonoAudio.playbackRate = rpm === 45 ? 1.3 : 1.0;
+            }
+
+            if (audioEngine.isPhonoPlaying) {
+                const origin = audioEngine.isProceduralFallbackActive ? "Live Web Synth" : "MP3 Stream";
+                document.getElementById('player-status-label').innerText = `🎵 Playing via ${origin} at ${rpm} RPM`;
+                
+                // If procedural, restart chord intervals to immediately match the faster rhythm
+                if (audioEngine.isProceduralFallbackActive) {
+                    audioEngine.stopProceduralPhonographMelody();
+                    audioEngine.startProceduralPhonographMelody();
+                }
+            }
+            audioEngine.playSfx('confetti'); // mini click mechanical feedback
+        }
+
+        window.onload = function() {
+            generateBubbles();
+            // Start audio stack safety on user interactions immediately
+            document.body.addEventListener('click', () => {
+                audioEngine.init();
+            }, { once: true });
+        };
+    </script>
+</body>
+</html>
